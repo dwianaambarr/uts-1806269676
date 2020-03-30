@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title>Ubah Buku</title>
+	    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+	    <nav th:replace="fragments/fragment :: navbar"></nav>
+	    <br>
+	    <div class="container-fluid">	      
+	        <div class="row">
+	            <div class="col-md-4">
+	            	 <div class="card">
+	            	 <b><center><div text-align = "center" class="card-header">Ubah Buku</div></center></b>
+	            	  <div text-align = "center" class="card-body" th:text="'Isian bertanda (*) wajib diisi'"></div>
+	                   <div class="card-body"> 
+	                        <form th:action="@{/buku/update/{kode} (kode=${old.kode})}" th:object="${old}" method="POST">
+	                            Kode Buku*: <br>
+	                            <input class="form-control" type="text" th:field="${old.kode}" readonly>
+	                            <br>
+	                            Judul*: <br>
+	                            <textarea class="form-control" name="judul" rows="2" th:field="${old.judul}"></textarea>
+	                            <br>
+	                            <div class="form-row">
+	                            <div class="col">
+	                            Jenis*: <br>
+	                            <div class="form-row">
+	                            	<div class="form-group col-md-9">
+			                            <select class="form-control" id="jenis" name="jenis">
+								<option value="1">Karya Tulis</option>
+								<option value="2">Majalah/Koran</option>
+								<option value="3">Cerita/Novel</option>
+								<option value="4">Buku Ajar</option>
+								<option value="5">Lainnya</option>									
+										</select>
+									</div></div></div><br>
+								<div class="col">  
+								Tanggal Terbit*: <br>
+	                            <input type="date" name="tanggal_terbit" th:field="${old.tanggal_terbit}" class="form-control"/></div></div>
+	                            <br>
+	                            Pengarang: <br>
+	                            <input type="text" name="pengarang" th:field="${old.pengarang}"class="form-control"/>
+	                            <br>
+	                            Penerbit: <br>
+	                            <input type="text" name="penerbit" th:field="${old.penerbit}"class="form-control"/>
+	                            <br>
+	                            Abstrak: <br>
+	                            <textarea class="form-control" name="abstrak" rows="3" th:field="${old.abstrak}"></textarea>
+	                            <br>
+	                            Status*: <br>
+	                            <input type="number" name="status" th:field="${old.status}" class="form-control"/>								  							
+	                            <br><br>                          
+	                            <button type="submit" class="btn btn-success" name="submit">Simpan</button>
+	                            <br>
+	            
+									<!--<div class="form-group col-md-2">
+										<button type="button" class="btn btn-primary" name="tambah">Tambah</button>	
+									</div>	 -->
+									 </form>
+  								</div>								
+	                     </div>
+                	</div>		        
+	            </div>
+	            <div class="col-md-4"></div>
+	        </div>        
+	</body>
+</html>

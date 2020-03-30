@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>PINI-Home</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	
+		
+		<div class="container-fluid" style="background: #008080; color: white">
+		<h1>Welcome!!</h1>
+            <p>Selamat Datang di Perpustakaan  Institut  Negeri  Indonesia  (PINI)</p> 
+           </div>    
+           
+           <div class="container-fluid">
+           <div class="container-fluid">
+           <br>   
+		<h4 align="center">DAFTAR BUKU</h4>
+		<br>
+        <div class="row">
+            <br> 			
+                <div class="table-responsive">	                  
+                      	<table class="table table-striped">
+						<thead class="thead-dark">
+						<tr>
+							<th width="5%" style="text-align: center">No</th>
+							<th width="10%" style="text-align: center">Kode</th>
+							<th width="30%" style="text-align: center">Judul</th>
+							<th width="10%" style="text-align: center">Jenis</th>
+							<th width="20%" style="text-align: center">Pengarang</th>
+							<th width="10%" style="text-align: center">Status</th>
+						</tr>
+						</thead>
+						
+					 	<tbody>
+							<tr  th:each="buku, i : ${buku}"> 
+								<td align=Center th:text="${i.count}"></td>
+								<td>
+								<a th:href="@{'/buku/' + ${buku.kode}}" th:text="${buku.kode}"></a>
+								</td>
+								<td th:text="${buku.judul}"></td>
+								<td>
+								<span th:if="${buku.jenis == 1}">Karya Tulis</span>
+								<span th:if="${buku.jenis == 2}">Majalah/Koran</span>
+								<span th:if="${buku.jenis == 2}">Cerita/Novel</span>
+								<span th:if="${buku.jenis == 2}">Buku Ajar</span>
+								<span th:if="${buku.jenis == 2}">Lainnya</span>
+								</td>
+								<td th:text="${buku.pengarang}"></td>
+								<td th:text="${buku.status}"></td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- <form th:action = "@{/buku/add}">
+						<button type = "submit" class="btn btn-primary">Tambah Buku</button> 
+					</form> -->
+					<br>
+      			</div>
+        	</div>
+    	</div>        
+	</div>
+</body>
+</html>

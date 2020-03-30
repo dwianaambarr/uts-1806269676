@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Detail Pustakawan</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	    <br>
+	    <div class="container-fluid">	      
+	        <div class="row">
+	            <div class="col-md-4">
+	            	 <div class="card">
+	            	 <div class="card-header"><center><b>Detail Buku</b></center></div>
+	                    <div class="card-body"> 
+	                    	<div class="form-group">
+						      	
+						    </div>
+								<b>Kode:</b><br>
+								<input class="form-control" type="text" th:field="${buku.kode}" readonly>
+								<br>
+	                            <b>Judul:</b><br>
+	                            <textarea class="form-control" rows="2" th:field="${buku.judul}" readonly></textarea>
+								<br>
+								<div class="form-row">
+	                            <div class="col">
+								<b>Jenis:</b> <br>
+								    <span th:if="${buku.jenis == 1}">
+								    <input class="form-control" type="text" value="Karya Tulis" readonly></span>
+									<span th:if="${buku.jenis == 2}">
+									<input class="form-control" type="text" value="Majalah/Koran" readonly></span>
+									<span th:if="${buku.jenis == 3}">
+									<input class="form-control" type="text" value="Cerita/Novel" readonly></span>
+									<span th:if="${buku.jenis == 4}">
+									<input class="form-control" type="text" value="Buku Ajar" readonly></span>
+									<span th:if="${buku.jenis == 5}">
+									<input class="form-control" type="text" value="Lainnya" readonly></span>
+	                            </div><br> 
+	                            <div class="col">
+	                            <b>Tanggal Terbit:</b> <br>
+	                            <input class="form-control" type="text" th:field="${buku.tanggal_terbit}" readonly></div></div>
+								<br>
+	                            <b>Pengarang:</b><br>
+	                            <input class="form-control" type="text" th:field="${buku.pengarang}" readonly>
+								<br>
+	                            <b>Penerbit:</b><br>
+	                            <input class="form-control" type="text" th:field="${buku.penerbit}" readonly>
+								<br>						
+	                            <b>Abstrak:</b><br>
+	                            <textarea class="form-control" rows="3" th:field="${buku.abstrak}" readonly></textarea>
+								<br>
+	                            <b>Status:</b><br>
+	                            <input class="form-control" type="text" th:field="${buku.status}" readonly>													
+	                           <br><br>						
+	                           <!--  <form th:action = "@{/}">
+									<button class="btn btn-primary" value = "submit">Kembali</button>
+								</form>-->
+								<a th:href="@{'/buku/update/' + ${buku.kode}}">
+								<input type="button" class="btn btn-success" value = "Ubah"></a>
+								 
+								<br>
+	                     </div>
+                	</div>		        
+	            </div>
+	            <div class="col-md-4"></div>
+	        </div>        
+	    </div>	    
+</body>
+</html>
